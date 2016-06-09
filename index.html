@@ -10,18 +10,27 @@
   </head>
   <body>
     <div class='row align-center'>
-        <div class='columns medium-8'>
+        <div class='columns medium-10'>
             <h1>Pokédex</h1>
         </div>
     </div>
 
     <div class='row align-center'>
-        <div class='medium-8 columns'>
-            <ol class='menu vertical' id='pokemon_list'>
-                <li id='li_template'>
-                    Template
-                </li>
-            </ol>
+        <div class='medium-11 columns'>
+            <div class='row'>
+                <div class='medium-6 columns'>
+                    <ol class='menu vertical' id='pokemon_list'>
+                        <li class='pokedex-entry clickable' id='li_template'>
+                            <img class='pokemon-icon' src='http://pokeapi.co/media/sprites/pokemon/1.png'><img>
+                            Template
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class='medium-4 columns pokemon-view'>
+                    Pokemon info here.
+                </div>
+            </div>
         </div>
     </div>
 
