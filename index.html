@@ -12,14 +12,24 @@
 
     <ol class='menu vertical' id='pokemon_list'>
         <li class='pokedex-entry clickable' id='li_template'>
-            <span class='pokemon-name'></span>
             <img class='pokemon-icon'>
+            <span class='pokemon-name'></span>
         </li>
     </ol>
 
-
     <div id='pokemon_view'>
+        <header id='big_name'><h1>POKEMON NAME</h1></header>
+        <div id='big_image'></div>
+        <div id='pokemon_description'></div>
+        <div id='pokemon_stats'>
+            <dl>
+                <li id='stat_template'>
+                <dt>STAT</dt><dd>NUMBER</dd>
+                </li>
+            </dl>
+        </div>
     </div>
+
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
