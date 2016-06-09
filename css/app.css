@@ -2,7 +2,40 @@ body{
     font-family:monospace;
     background-color:#333333;
     color:white;
+    position:relative;
 }
+
+#pokemon_view{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:15rem;
+}
+
+#pokemon_list{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    width:15rem;
+    overflow-y:scroll;
+    padding: 1em;
+    direction:rtl;
+    text-align: left;
+}
+
+#pokemon_list::-webkit-scrollbar{
+    width: 10px;
+    background-color:transparent;
+    
+}
+
+#pokemon_list::-webkit-scrollbar-thumb{
+    background-color: grey;
+    border-radius: 5px;
+}
+
 
 .pokedex-entry{
     background:transparent;

@@ -9,31 +9,16 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <div class='row'>
-        <div class='columns medium-10 medium-offset-1'>
-            <h1>Pokédex</h1>
-        </div>
-    </div>
 
-    <div class='row'>
-        <div class='medium-10 columns medium-offset-1'>
-            <div class='row'>
-                <div class='medium-5 column'>
-                    <ol class='menu vertical' id='pokemon_list'>
-                        <li class='pokedex-entry clickable' id='li_template'>
-                            <div class='thumbnail'>
-                            <img class='pokemon-icon' src='http://pokeapi.co/media/sprites/pokemon/1.png'>
-                            </div>
-                            Template
-                        </li>
-                    </ol>
-                </div>
-                
-                <div class='medium-7 columns pokemon-view'>
-                    Pokemon info here.
-                </div>
-            </div>
-        </div>
+    <ol class='menu vertical' id='pokemon_list'>
+        <li class='pokedex-entry clickable' id='li_template'>
+            <span class='pokemon-name'></span>
+            <img class='pokemon-icon'>
+        </li>
+    </ol>
+
+
+    <div id='pokemon_view'>
     </div>
 
     <script src="js/vendor/jquery.js"></script>
