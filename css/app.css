@@ -1,9 +1,15 @@
+body{
+    font-family:monospace;
+    background-color:#333333;
+    color:white;
+}
+
 .pokedex-entry{
-    background:lightcyan;
+    background:transparent;
 }
 
 .pokedex-entry:hover{
-    background:lightyellow;
+    background:dimgrey;
 }
 
 .clickable{
