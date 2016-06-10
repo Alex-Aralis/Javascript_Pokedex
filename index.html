@@ -13,21 +13,31 @@
         <input type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
     </form>
 
-    <ol class='menu vertical' id='pokemon_list'>
-        <li class='pokedex-entry clickable' id='li_template'>
-            <img class='pokemon-icon'>
-            <span class='pokemon-name capitalize'></span>
-        </li>
-    </ol>
+    <div id='pokemon_list_container'>
+        <ol class='menu vertical' id='pokemon_list'>
+            <li class='pokedex-entry clickable' id='li_template'>
+                <img class='pokemon-icon'>
+                <span class='pokemon-name capitalize'>temp</span>
+            </li>
+        </ol>
+    </div>
 
     <div id='pokemon_view'>
-        <header id='big_name' class='capitalize'><h2>POKEMON NAME</h2></header>
+        <header id='big_name' class='capitalize'>POKEMON NAME</header>
 
         <div id='pokemon_img_stats_row'>
             <img id='big_image' src='http://pokeapi.co/media/sprites/pokemon/108.png'>
             <div id='pokemon_stats'>
-                <dl>
-                    <li id='stat_template'>
+                <dl class='flex-container'>
+                    <li id='stat_template' class='flex-item'>
+                        <dt>STAT</dt>
+                        <dd>NUMBER</dd>
+                    </li>
+                    <li id='stat_template' class='flex-item'>
+                        <dt>STAT</dt>
+                        <dd>NUMBER</dd>
+                    </li>
+                    <li id='stat_template' class='flex-item'>
                         <dt>STAT</dt>
                         <dd>NUMBER</dd>
                     </li>
