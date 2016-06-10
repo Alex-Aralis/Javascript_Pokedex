@@ -11,21 +11,20 @@
   <body>
     <form id='search_form'>
         <input type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
-        <!--button class='hidden' type='submit'></button-->
     </form>
 
     <ol class='menu vertical' id='pokemon_list'>
         <li class='pokedex-entry clickable' id='li_template'>
             <img class='pokemon-icon'>
-            <span class='pokemon-name'></span>
+            <span class='pokemon-name capitalize'></span>
         </li>
     </ol>
 
     <div id='pokemon_view'>
-        <header id='big_name'><h1>POKEMON NAME</h1></header>
+        <header id='big_name' class='capitalize'><h2>POKEMON NAME</h2></header>
 
         <div id='pokemon_img_stats_row'>
-            <div id='big_image'>IMAGE</div>
+            <img id='big_image' src='http://pokeapi.co/media/sprites/pokemon/108.png'>
             <div id='pokemon_stats'>
                 <dl>
                     <li id='stat_template'>
@@ -36,7 +35,11 @@
             </div>
         </div>
 
-        <div id='pokemon_description_row'></div>
+        <div id='pokemon_description_row'>
+            <p>
+            Lickitung is a great.  No matter how long it keeps its tongue out hanging in the wind, it remains moist.
+            </p>
+        </div>
         </div>
     </div>
 
