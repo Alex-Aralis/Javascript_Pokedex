@@ -10,8 +10,8 @@ var Pokedex = {
         var li = this.template.clone().bind(this);
         var list = $("#pokemon_list");
         var icon = li.find(".pokemon-icon");
+        li.find(".pokemon-name").text(pokemon.pokemon_species.name);
         icon.attr("src", "http://pokeapi.co/media/sprites/pokemon/" + pokemon.entry_number + ".png");
-        li.text(pokemon.pokemon_species.name);
         li.append(icon);
         list.append(li);
     },
