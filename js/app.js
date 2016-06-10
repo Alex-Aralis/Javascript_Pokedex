@@ -2,7 +2,7 @@ $(document).foundation()
 
 var Pokedex = {
 
-    statsRowTemplate: template = $("#pokemon_img_stats_row");
+    statsRowTemplate: template = $("#pokemon_img_stats_row"),
 
     template: template = $("#li_template")
             .detach()
