@@ -33,7 +33,12 @@ var Pokedex = {
         if(!/^.*\/$/.test(url))
             this.url += "/";
 
-        this.getAllPokemon()
+        this.getAllPokemon();
+
+        $(document).on("click", "li.pokedex-entry.clickable", function(ev) {
+            ev.preventDefault();
+            console.log(ev.currentTarget);
+        })
     },
 };
 
