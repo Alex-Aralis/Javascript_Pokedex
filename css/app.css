@@ -1,5 +1,5 @@
 body{
-    font-family:monospace;
+    font-family:gbfont;
     background-color:#333333;
     color:white;
     position:relative;
@@ -9,7 +9,7 @@ body{
     flex:1.5;
     padding: 1rem;
     margin:0;
-    font-size:1.7rem;
+    font-size:1.5rem;
 }
 
 .flex-item{
@@ -146,7 +146,7 @@ ol#pokemon_list .pokedex-entry{
 }
 
 .pokemon-name{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding: 0 0 0 1rem;
 }
 
@@ -173,4 +173,9 @@ ol#pokemon_list .pokedex-entry{
 
 p{
     text-indent: 2.5rem;
+}
+
+@font-face{
+    font-family:gbfont;
+    src: url(../fonts/gbfont.ttf)
 }
