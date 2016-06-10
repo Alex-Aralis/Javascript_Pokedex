@@ -9,47 +9,51 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <form id='search_form'>
-        <input type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
-    </form>
 
-    <div id='pokemon_list_container'>
+    <div id='side_bar'>
+        <div class='relative-box'>
+        <form id='search_form'>
+            <input type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
+        </form>
+
         <ol class='menu vertical' id='pokemon_list'>
             <li class='pokedex-entry clickable' id='li_template'>
                 <img class='pokemon-icon'>
                 <span class='pokemon-name capitalize'>temp</span>
             </li>
         </ol>
+        </div>
     </div>
 
     <div id='pokemon_view'>
-        <header id='big_name' class='capitalize'>POKEMON NAME</header>
+        <div class='relative-box'>
+            <header id='big_name' class='capitalize text-bubble'>POKEMON NAME</header>
 
-        <div id='pokemon_img_stats_row'>
-            <img id='big_image' src='http://pokeapi.co/media/sprites/pokemon/108.png'>
-            <div id='pokemon_stats'>
-                <dl class='flex-container'>
-                    <li id='stat_template' class='flex-item'>
-                        <dt>STAT</dt>
-                        <dd>NUMBER</dd>
-                    </li>
-                    <li id='stat_template' class='flex-item'>
-                        <dt>STAT</dt>
-                        <dd>NUMBER</dd>
-                    </li>
-                    <li id='stat_template' class='flex-item'>
-                        <dt>STAT</dt>
-                        <dd>NUMBER</dd>
-                    </li>
-                </dl>
+            <div id='pokemon_img_stats_row'>
+                <img id='big_image' src='http://pokeapi.co/media/sprites/pokemon/108.png'>
+                <div id='pokemon_stats'>
+                    <dl class='flex-container'>
+                        <li id='stat_template' class='flex-item text-bubble padding'>
+                            <dt>STAT</dt>
+                            <dd>NUMBER</dd>
+                        </li>
+                        <li id='stat_template' class='flex-item text-bubble padding'>
+                            <dt>STAT</dt>
+                            <dd>NUMBER</dd>
+                        </li>
+                        <li id='stat_template' class='flex-item text-bubble padding'>
+                            <dt>STAT</dt>
+                            <dd>NUMBER</dd>
+                        </li>
+                    </dl>
+                </div>
             </div>
-        </div>
 
-        <div id='pokemon_description_row'>
-            <p>
-            Lickitung is a great.  No matter how long it keeps its tongue out hanging in the wind, it remains moist.
-            </p>
-        </div>
+            <div id='pokemon_description_row'>
+                <p>
+                Lickitung is a great.  No matter how long it keeps its tongue out hanging in the wind, it remains moist.
+                </p>
+            </div>
         </div>
     </div>
 
