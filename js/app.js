@@ -2,9 +2,16 @@ $(document).foundation()
 
 var Pokedex = {
 
+    statsRowTemplate: template = $("#pokemon_img_stats_row");
+
     template: template = $("#li_template")
             .detach()
             .removeAttr("id"),
+
+    loadBigImage: function(img) {
+        var place = this.statsRowTemplate.clone();
+        var bigIcon = place.find("#big_image").attr("src", img);
+    },
 
     addPokemonToList: function(pokemon) {
         var li = this.template.clone().bind(this);
@@ -37,8 +44,8 @@ var Pokedex = {
 
         $(document).on("click", "li.pokedex-entry.clickable", function(ev) {
             ev.preventDefault();
-            console.log(ev.currentTarget);
-        })
+            this.loadBigImage(ev.currentTarget.children[1].getAttribute("src"));
+        }.bind(this));
     },
 };
 
