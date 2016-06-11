@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" dir="ltr">
+<html ng-app="pokeApp" class="no-js" lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -7,20 +7,25 @@
     <title>Foundation for Sites</title>
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
-  </head>
-  <body>
 
+    <script src="js/vendor/jquery.js"></script>
+    <script src='js/vendor/angular.js'></script>
+  </head>
+
+  <body ng-controller="pokeController">
     <div id='side_bar'>
         <div class='relative-box'>
         <form id='search_form'>
-            <input type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
+            <input ng-model='searchbox' type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
         </form>
 
+        <div>{{ searchbox }}</div>
+
         <ol class='menu vertical' id='pokemon_list'>
-            <li class='pokedex-entry clickable' id='li_template'>
+            <!--li class='pokedex-entry clickable' ng-repeat='PokeList'>
                 <img class='pokemon-icon'>
                 <span class='pokemon-name capitalize'>temp</span>
-            </li>
+            </li-->
         </ol>
         </div>
     </div>
@@ -60,7 +65,6 @@
     </div>
 
 
-    <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
     <script src="js/app.js"></script>
