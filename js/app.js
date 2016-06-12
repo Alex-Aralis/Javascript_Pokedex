@@ -7,7 +7,7 @@ angular.module('pokeApp', [])
         console.log(pokeobj);
     }
 
-    function loadPokedex(callback){
+    $scope.loadPokedex = function(callback){
         if(localStorage.pokedex){
             $scope.pokedex = JSON.parse(localStorage.pokedex);
             callback($scope.pokedex);
@@ -20,81 +20,81 @@ angular.module('pokeApp', [])
         }
     }
 
-    function loadPokemon(entry_number, callback){
-        if(localStorage.getItem('pokemon'+entry_number)){
+    $scope.loadPokemonData = function(entry_number, callback){
+        if(localStorage.getItem('pokedata'+entry_number)){
             console.log('entry ' +entry_number+'has been retrieved from the cache');
-            callback(JSON.parse(localStorage.getItem('pokemon'+entry_number)));
+            callback(JSON.parse(localStorage.getItem('pokedata'+entry_number)));
         }else{
-            getPokemon(entry_number, function(pokeobj){
-                localStorage.setItem('pokemon'+entry_number, JSON.stringify(pokeobj));
-                callback(pokeobj);
+            $scope.getPokemonData(entry_number, function(pokedata){
+                localStorage.setItem('pokedata'+entry_number, JSON.stringify(pokedata));
+                callback(pokedata);
             });
         }
     }
 
-    function loadPokemonDesc(entry_number, callback){
-        if(localStorage.getItem('pokemonDesc'+entry_number)){
+    $scope.getPokemonData = function(entry_number, callback){
+        $http.get(url+'pokemon/' + entry_number + '/')
+            .then(function(result){
+                delete result.data.game_indices;
+                delete result.data.moves;
+
+                console.log('entry number ' + entry_number + 'has succeeded');
+                callback(result.data);
+            }, function (){
+                console.log('entry number ' + entry_number + 'has failed');
+                $scope.getPokemonData(entry_number, callback);
+            });
+    }
+
+    $scope.loadPokemonDesc = function(entry_number, callback){
+        if(localStorage.getItem('pokedesc'+entry_number)){
             console.log('entry ' +entry_number+' desc has been retrieved from the cache');
-            callback(JSON.parse(localStorage.getItem('pokemonDesc'+entry_number)));
+            callback(JSON.parse(localStorage.getItem('pokedesc'+entry_number)));
         }else{
-            getPokemonDesc(entry_number, function(pokeobj){
-                localStorage.setItem('pokemonDesc'+entry_number, JSON.stringify(pokeobj));
-                callback(pokeobj);
+            $scope.getPokemonDesc(entry_number, function(pokedesc){
+                localStorage.setItem('pokedesc'+entry_number, JSON.stringify(pokedesc));
+                callback(pokedesc);
             });
         }
     }
     
 
-    function getPokemonDesc(entry_number, callback){
+    $scope.getPokemonDesc = function(entry_number, callback){
         $http.get(url+'pokemon-species/' + entry_number + '/')
         .then(function(result){
             console.log('entry number ' + entry_number + 'has succeeded for desc');
             callback(result.data);
         }, function (){
             console.log('entry number ' + entry_number + 'has failed for desc');
-            getPokemonDesc(entry_number, callback);
+            $scope.getPokemonDesc(entry_number, callback);
         });
         
     }
 
-    function getPokemon(entry_number, callback){
-        $http.get(url+'pokemon/' + entry_number + '/')
-        .then(function(result){
-            delete result.data.game_indices;
-            delete result.data.moves;
-
-            console.log('entry number ' + entry_number + 'has succeeded');
-            callback(result.data);
-        }, function (){
-            console.log('entry number ' + entry_number + 'has failed');
-            getPokemon(entry_number, callback);
-        });
-    }
-
-    loadPokedex(function(pokedex){
-        if(localStorage.pokeListObj){
-            $scope.pokeListObj = JSON.pasre(localStorage.pokeListObj);
-        }else{
+    $scope.getPokeobj = function(id){
+        if(!$scope.pokeListObj){
             $scope.pokeListObj = {};
         }
-        
-        if(localStorage.pokeDesc){
-            $scope.pokeDescObj = JSON.pasre(localStorage.pokeDesc);
-        }else{
-            $scope.pokeDescObj = {};
-        }
-        
 
+        if($scope.pokeListObj[id]){
+            return $scope.pokeListObj[id];
+        }else{
+            $scope.pokeListObj[id] = {};
+            return $scope.pokeListObj[id];
+        }
+    }
+
+    $scope.loadPokedex(function(pokedex){
         pokedex.pokemon_entries.forEach(function(entry){
-            loadPokemon(entry.entry_number, function(pokeobj){
-                $scope.pokeListObj[entry.entry_number] = pokeobj;
-                $scope.pokeList = _.sortBy($scope.pokeListObj, function(val, key, obj){
-                    return obj.id;
+            $scope.loadPokemonData(entry.entry_number, function(pokedata){
+                $scope.getPokeobj(entry.entry_number).pokedata = pokedata;
+                $scope.pokeList = _.sortBy($scope.pokeListObj, function(val, key){
+                    return key;
                 });
             });
 
-            loadPokemonDesc(entry.entry_number, function(pokeDesc){
-                $scope.pokeDescObj[entry.entry_number] = pokeDesc;
+            $scope.loadPokemonDesc(entry.entry_number, function(pokedesc){
+                $scope.getPokeobj(entry.entry_number).pokedesc = pokedesc;
             });
         });
     });
