@@ -9,57 +9,63 @@
     <link rel="stylesheet" href="css/app.css">
 
     <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/underscore.js"></script>
     <script src='js/vendor/angular.js'></script>
   </head>
 
   <body ng-controller="pokeController">
     <div id='side_bar'>
         <div class='relative-box'>
-        <form id='search_form'>
-            <input ng-model='searchbox' type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
-        </form>
+            <form id='search_form'>
+                <input ng-model='searchbox' type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
+            </form>
 
-        <div>{{ searchbox }}</div>
-
-        <ol class='menu vertical' id='pokemon_list'>
-            <!--li class='pokedex-entry clickable' ng-repeat='PokeList'>
-                <img class='pokemon-icon'>
-                <span class='pokemon-name capitalize'>temp</span>
-            </li-->
-        </ol>
+            <ol class='menu vertical' id='pokemon_list'>
+                <li class='pokedex-entry clickable' ng-click='entryClickHandler(pokemon)' ng-repeat='pokemon in pokeList' ng-cloak>
+                    <span class='pokemon-name capitalize'>{{ pokemon.pokedata.name }}</span>
+                    <img class='pokemon-icon' src="{{ pokemon.pokedata.sprites.front_default }}">
+                </li>
+            </ol>
         </div>
     </div>
 
-    <div id='pokemon_view'>
+    <div id='pokemon_view' ng-cloak>
         <div class='relative-box'>
             <div id='title_bar'>
-                <span id='big_name' class='capitalize text-bubble'>POKEMON NAME</span>
+                <span id='big_name' class='capitalize text-bubble'>{{ view_pokemon.pokedata.name }}</span>
             </div>
 
             <div id='pokemon_img_stats_row'>
-                <img id='big_image' src='http://pokeapi.co/media/sprites/pokemon/108.png'>
-                <div id='pokemon_stats'>
-                    <dl class='flex-container'>
-                        <li id='stat_template' class='flex-item text-bubble padding'>
-                            <dt>STAT</dt>
-                            <dd>NUMBER</dd>
-                        </li>
-                        <li id='stat_template' class='flex-item text-bubble padding'>
-                            <dt>STAT</dt>
-                            <dd>NUMBER</dd>
-                        </li>
-                        <li id='stat_template' class='flex-item text-bubble padding'>
-                            <dt>STAT</dt>
-                            <dd>NUMBER</dd>
-                        </li>
-                    </dl>
+                <img id='big_image' src='{{ view_pokemon.pokedata.sprites.front_default }}'>
+                <div id='pokemon_stat_type_column'>
+                    <div id='pokemon_stats'>
+                        <dl class='flex-container no-bullet flex-wrap'>
+                            <li class='flex-item text-bubble padding'>
+                                <dt>Family</dt>
+                                <dd>{{ view_pokemon.pokedesc.genera[0].genus }}</dd>
+                            </li>
+                            <li class='flex-item text-bubble padding'>
+                                <dt>Height</dt>
+                                <dd>{{ view_pokemon.pokedata.height }}</dd>
+                            </li>
+                            <li class='flex-item text-bubble padding'>
+                                <dt>Weight</dt>
+                                <dd>{{ view_pokemon.pokedata.weight }}</dd>
+                            </li>
+                        </dl>
+                    </div>
+                    <div id='pokemon_types' class='bottom-align right-just flex-container'>
+                        <dl class='flex-container no-bullet right-just'>
+                            <li ng-repeat='type in view_pokemon.pokedata.types' class='text-bubble short-padding' ng-class='type.type.name'>
+                                {{ type.type.name }}
+                            </li>
+                        </dl> 
+                    </div>
                 </div>
             </div>
 
             <div id='pokemon_description_row'>
-                <p>
-                Lickitung is a great.  No matter how long it keeps its tongue out hanging in the wind, it remains moist.
-                </p>
+                <p>{{ view_pokemon.pokedesc.flavor_text_entries[53].flavor_text }}</p>
             </div>
         </div>
     </div>

@@ -1,8 +1,22 @@
 body{
+/*
     font-family:gbfont;
+*/
     background-color:#333333;
     color:white;
     position:relative;
+}
+
+#pokemon_stat_type_column{
+    flex:1 1 0;
+}
+
+.right-just{
+    justify-content:flex-end;
+}
+
+.bottom-align{
+    align-items: flex-end;
 }
 
 #pokemon_stats{
@@ -10,6 +24,15 @@ body{
     padding: 1rem;
     margin:0;
     font-size:1.5rem;
+    height:80%;
+}
+
+#pokemon_types{
+    padding: 1rem;
+    margin:0;
+    font-size:1.5rem;
+    height:20%;
+    width:100%;
 }
 
 .flex-item{
@@ -18,10 +41,10 @@ body{
 
 .flex-container{
     display:flex;
+}
+
+.flex-wrap{
     flex-wrap:wrap;
-    align-content:space-around;
-    item-align:stretch;
-    height:100%;
 }
 
 .text-bubble{
@@ -32,8 +55,71 @@ body{
     color:white;
 }
 
+.electric{
+    box-shadow: inset 0 0 15px yellow;
+}
+
+.fire{
+    box-shadow: inset 0 0 15px red;
+}
+
+.water{
+    box-shadow: inset 0 0 15px blue;
+}
+
+.ice{
+    box-shadow: inset 0 0 15px lightblue;
+} 
+
+.grass{
+    box-shadow: inset 0 0 15px green;
+}
+
+.poison{
+    box-shadow: inset 0 0 15px yellowgreen;
+}
+
+.bug{
+    box-shadow: inset 0 0 15px darkgreen;
+}
+
+.psychic{
+    box-shadow: inset 0 0 15px fuchsia;
+}
+
+.ground{
+    box-shadow: inset 0 0 15px brown;
+}
+
+.fighting{
+    box-shadow: inset 0 0 15px darkred;
+}
+
+.fairy{
+    box-shadow: inset 0 0 15px pink;
+}
+
+.normal{
+    box-shadow: inset 0 0 15px grey;
+}
+
+.flying{
+    box-shadow: inset 0 0 15px white;
+}
+
+.dragon{
+    box-shadow: inset 0 0 15px orange;
+}
+
+.ghost{
+    box-shadow: inset 0 0 15px purple;
+}
 .padding{
     padding: 10px;
+}
+
+.short-padding{
+    padding: 3px 12px 3px 12px;
 }
 
 #title_bar{
@@ -169,6 +255,10 @@ ol#pokemon_list .pokedex-entry{
 
 .capitalize{
     text-transform: capitalize;
+}
+
+dl{
+    margin:0;
 }
 
 p{
