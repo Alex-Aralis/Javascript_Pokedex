@@ -46,11 +46,11 @@
                             </li>
                             <li class='flex-item text-bubble padding'>
                                 <dt>Height</dt>
-                                <dd>{{ view_pokemon.pokedata.height }}</dd>
+                                <dd class='dm-in-cm' >{{ view_pokemon.pokedata.height }}</dd>
                             </li>
                             <li class='flex-item text-bubble padding'>
-                                <dt>Weight</dt>
-                                <dd>{{ view_pokemon.pokedata.weight }}</dd>
+                                <dt >Weight</dt>
+                                <dd class='in-kg' >{{ (view_pokemon.pokedata.weight)/10.0 }}</dd>
                             </li>
                         </dl>
                     </div>

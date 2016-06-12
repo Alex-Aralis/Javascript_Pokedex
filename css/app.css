@@ -100,7 +100,7 @@ body{
 }
 
 .normal{
-    box-shadow: inset 0 0 15px grey;
+    box-shadow: inset 0 0 15px lightgrey;
 }
 
 .flying{
@@ -113,6 +113,10 @@ body{
 
 .ghost{
     box-shadow: inset 0 0 15px purple;
+}
+
+.rock{
+    box-shadow: inset 0 0 15px grey;
 }
 .padding{
     padding: 10px;
@@ -239,6 +243,14 @@ ol#pokemon_list .pokedex-entry{
 #pokemon_list .pokedex-entry:hover{
     background:#434B36;
     
+}
+
+.dm-in-cm::after{
+    content:'0 cm';
+}
+
+.in-kg::after{
+    content:' kg';
 }
 
 .clickable{
