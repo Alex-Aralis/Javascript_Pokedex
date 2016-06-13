@@ -88,7 +88,6 @@ angular.module('pokeApp', [])
         pokedex.pokemon_entries.forEach(function(entry){
             $scope.loadPokemonData(entry.entry_number, function(pokedata){
                 $scope.getPokeobj(entry.entry_number).pokedata = pokedata;
-                console.log(pokedata);
                 $scope.pokeList = _.sortBy($scope.pokeListObj, function(val, key){
                     return Number(key);
                 });

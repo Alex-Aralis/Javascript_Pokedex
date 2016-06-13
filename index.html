@@ -17,11 +17,11 @@
     <div id='side_bar'>
         <div class='relative-box'>
             <form id='search_form'>
-                <input ng-model='searchbox' type='text' id='searchbox' name='searchbox' autocomplete='off' placeholder='Search!'>
+                <input ng-model='searchbox' type='text' id='searchbox' name='searchbox' ng-init='searchbox=""' autocomplete='off' placeholder='Search!'>
             </form>
 
             <ol class='menu vertical' id='pokemon_list'>
-                <li class='pokedex-entry clickable' ng-click='entryClickHandler(pokemon)' ng-repeat='pokemon in pokeList' ng-show='pokemon.pokedata.name.indexOf(searchbox) !== -1' ng-cloak>
+                <li class='pokedex-entry clickable' ng-click='entryClickHandler(pokemon)' ng-repeat='pokemon in pokeList' ng-show='(pokemon.pokedata.name.indexOf(searchbox) !== -1) && pokemon.pokedata' ng-cloak>
                     <span class='pokemon-name capitalize'>{{ pokemon.pokedata.name }}</span>
                     <img class='pokemon-icon' src="{{ pokemon.pokedata.sprites.front_default }}">
                 </li>
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div id='pokemon_view' ng-cloak>
+    <div id='pokemon_view' ng-show='view_pokemon' ng-cloak>
         <div class='relative-box flex-container flex-wrap'>
             <div id='title_bar'>
                 <span id='big_name' class='capitalize text-bubble'>{{ view_pokemon.pokedata.name }} ({{ view_pokemon.pokedata.id }})</span>
