@@ -90,7 +90,7 @@ angular.module('pokeApp', [])
                 $scope.getPokeobj(entry.entry_number).pokedata = pokedata;
                 console.log(pokedata);
                 $scope.pokeList = _.sortBy($scope.pokeListObj, function(val, key){
-                    return key;
+                    return Number(key);
                 });
             });
 

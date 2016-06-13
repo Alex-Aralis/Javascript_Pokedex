@@ -1,9 +1,7 @@
 body{
-/*
-    font-family:gbfont;
-*/
+    font-family:gbfont, Fallback, sans-serif;
     background-color:#333333;
-    color:white;
+    color:#EEEEEE;
     position:relative;
 }
 
@@ -128,7 +126,9 @@ body{
 
 #title_bar{
     width:100%;
+/*
     height:10%;
+*/
     text-align:center;
     display:table;
 }
@@ -142,12 +142,12 @@ body{
 }
 
 #pokemon_description_row{
-    height:35%;
+    align-self:flex-end;
     background-color:#222222;
     border:2px solid grey;
     border-radius:20px;
     padding: 1rem;
-    font-size:1.5rem;
+    font-size:2.4rem;
 }
 
 #big_image{
@@ -160,14 +160,16 @@ body{
     top:0;
     right:0;
     bottom:0;
-    left:25rem;
+    left:30rem;
     padding: 1%;
     box-shadow:inset -4px 0 5px #222222;
 }
 
 #pokemon_img_stats_row{
     display:flex;
-    height:55%;
+    height:45%;
+    align-self:center;
+    width:100%;
 }
 
 #side_bar{
@@ -177,7 +179,7 @@ body{
     left: 0;
     bottom: 0;
 
-    width: 25rem;
+    width: 30rem;
     padding: 1% 1% 1% 1%;
     
     background-color:#444036;
@@ -261,6 +263,10 @@ ol#pokemon_list .pokedex-entry{
     cursor:pointer;
 }
 
+.clicked{
+    
+}
+
 .hidden{
     display:none;
 }
@@ -279,5 +285,5 @@ p{
 
 @font-face{
     font-family:gbfont;
-    src: url(../fonts/gbfont.ttf)
+    src: url(../fonts/PressStart2P.ttf) format('truetype');
 }
