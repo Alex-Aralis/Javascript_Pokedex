@@ -19,7 +19,9 @@ angular.module('pokeApp', [])
             var reg = new RegExp(str, 'i');
 
             $scope.pokeList.forEach(function(pokeobj){
-                pokeobj.isVisible = (pokeobj.pokedata.name.search($scope.searchbox) !== -1) && pokeobj.pokedata;
+                pokeobj.isVisible = 
+                    (pokeobj.pokedata.name.search($scope.searchbox) !== -1) && 
+                    (pokeobj.pokedata);
             });
         }catch(e){
             $scope.pokeList.forEach(function(pokeobj){
