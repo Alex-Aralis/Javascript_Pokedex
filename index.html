@@ -35,6 +35,7 @@
                     ng-click='entryClickHandler(pokemon)' 
                     ng-repeat='pokemon in pokeList' 
                     ng-show='pokemon.isVisible' 
+                    ng-class='pokemon.isSelected'
                     ng-cloak
                 >
 

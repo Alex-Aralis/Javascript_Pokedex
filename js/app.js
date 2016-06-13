@@ -4,6 +4,13 @@ angular.module('pokeApp', [])
 .controller('pokeController', function($scope, $http){
     $scope.entryClickHandler = function(pokeobj){
         $scope.view_pokemon = pokeobj;
+
+        $scope.pokeList.forEach(function(pokeobj){
+            pokeobj.isSelected = 'not-selected';
+        });
+
+        pokeobj.isSelected = 'selected';
+
         console.log(pokeobj);
     };
 
@@ -100,6 +107,7 @@ angular.module('pokeApp', [])
         }
 
         $scope.pokeListObj[id].isVisible = false;
+        $scope.isSelected = 'not-selected';
 
         return $scope.pokeListObj[id];
     };

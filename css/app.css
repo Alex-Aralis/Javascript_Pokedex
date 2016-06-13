@@ -264,6 +264,14 @@ ol#pokemon_list .pokedex-entry{
     cursor:pointer;
 }
 
+#pokemon_list li.selected{
+    background-color:#222222;
+}
+
+#pokemon_list li.selected:hover{
+    background-color:#333333;
+}
+
 .clicked{
     
 }
