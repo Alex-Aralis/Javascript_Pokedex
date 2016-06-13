@@ -17,11 +17,27 @@
     <div id='side_bar'>
         <div class='relative-box'>
             <form id='search_form'>
-                <input ng-model='searchbox' type='text' id='searchbox' name='searchbox' ng-init='searchbox=""' autocomplete='off' placeholder='Search!'>
+                <input 
+                    ng-init='$scope.searchboxInitHandler("")' 
+                    ng-model='searchbox'
+                    ng-keyup='searchboxKeyHandler()'
+                    autocomplete='off' 
+                    placeholder='Search!'
+                    type='text' 
+                    id='searchbox' 
+                    name='searchbox' 
+                >
             </form>
 
             <ol class='menu vertical' id='pokemon_list'>
-                <li class='pokedex-entry clickable' ng-click='entryClickHandler(pokemon)' ng-repeat='pokemon in pokeList' ng-show='(pokemon.pokedata.name.indexOf(searchbox) !== -1) && pokemon.pokedata' ng-cloak>
+                <li class='pokedex-entry clickable' 
+                    ng-init='pokemon.isVisible = pokemon.pokedata && (pokemon.pokedata.name.search(searchboxRegExp) !== -1)'
+                    ng-click='entryClickHandler(pokemon)' 
+                    ng-repeat='pokemon in pokeList' 
+                    ng-show='pokemon.isVisible' 
+                    ng-cloak
+                >
+
                     <span class='pokemon-name capitalize'>{{ pokemon.pokedata.name }}</span>
                     <img class='pokemon-icon' src="{{ pokemon.pokedata.sprites.front_default }}">
                 </li>
@@ -30,7 +46,7 @@
     </div>
 
     <div id='pokemon_view' ng-show='view_pokemon' ng-cloak>
-        <div class='relative-box flex-container flex-wrap'>
+        <div class='relative-box flex-container flex-wrap flex-center'>
             <div id='title_bar'>
                 <span id='big_name' class='capitalize text-bubble'>{{ view_pokemon.pokedata.name }} ({{ view_pokemon.pokedata.id }})</span>
             </div>

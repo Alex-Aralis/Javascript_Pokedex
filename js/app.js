@@ -5,7 +5,26 @@ angular.module('pokeApp', [])
     $scope.entryClickHandler = function(pokeobj){
         $scope.view_pokemon = pokeobj;
         console.log(pokeobj);
-    }
+    };
+
+    $scope.searchboxKeyHandler = function(str){
+        try{
+            var reg = new RegExp(str, 'i');
+
+            $scope.pokeList.forEach(function(pokeobj){
+                pokeobj.isVisible = (pokeobj.pokedata.name.search($scope.searchbox) !== -1) && pokeobj.pokedata;
+            });
+        }catch(e){
+            $scope.pokeList.forEach(function(pokeobj){
+                pokeobj.isVisible = false;
+            });
+        }
+    };
+
+    $scope.searchboxInitHandler = function(str){
+        $scope.searchbox = str;
+        $scope.searchboxRegExp = new RegExp(str, 'i');
+    };
 
     $scope.loadPokedex = function(callback){
         if(localStorage.pokedex){
@@ -18,7 +37,7 @@ angular.module('pokeApp', [])
                     callback(result.data);
                 });
         }
-    }
+    };
 
     $scope.loadPokemonData = function(entry_number, callback){
         if(localStorage.getItem('pokedata'+entry_number)){
@@ -30,7 +49,7 @@ angular.module('pokeApp', [])
                 callback(pokedata);
             });
         }
-    }
+    };
 
     $scope.getPokemonData = function(entry_number, callback){
         $http.get(url+'pokemon/' + entry_number + '/')
@@ -44,7 +63,7 @@ angular.module('pokeApp', [])
                 console.log('entry number ' + entry_number + 'has failed');
                 $scope.getPokemonData(entry_number, callback);
             });
-    }
+    };
 
     $scope.loadPokemonDesc = function(entry_number, callback){
         if(localStorage.getItem('pokedesc'+entry_number)){
@@ -56,7 +75,7 @@ angular.module('pokeApp', [])
                 callback(pokedesc);
             });
         }
-    }
+    };
     
 
     $scope.getPokemonDesc = function(entry_number, callback){
@@ -69,20 +88,21 @@ angular.module('pokeApp', [])
             $scope.getPokemonDesc(entry_number, callback);
         });
         
-    }
+    };
 
     $scope.getPokeobj = function(id){
         if(!$scope.pokeListObj){
             $scope.pokeListObj = {};
         }
 
-        if($scope.pokeListObj[id]){
-            return $scope.pokeListObj[id];
-        }else{
+        if(!$scope.pokeListObj[id]){
             $scope.pokeListObj[id] = {};
-            return $scope.pokeListObj[id];
         }
-    }
+
+        $scope.pokeListObj[id].isVisible = false;
+
+        return $scope.pokeListObj[id];
+    };
 
     $scope.loadPokedex(function(pokedex){
         pokedex.pokemon_entries.forEach(function(entry){

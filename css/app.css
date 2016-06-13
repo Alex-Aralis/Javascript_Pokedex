@@ -45,6 +45,9 @@ body{
     flex-wrap:wrap;
 }
 
+.flex-center{
+    align-items:center;
+}
 .text-bubble{
     border-radius: 20px;
     background-color:#222222;
@@ -142,7 +145,6 @@ body{
 }
 
 #pokemon_description_row{
-    align-self:flex-end;
     background-color:#222222;
     border:2px solid grey;
     border-radius:20px;
@@ -168,7 +170,6 @@ body{
 #pokemon_img_stats_row{
     display:flex;
     height:45%;
-    align-self:center;
     width:100%;
 }
 
